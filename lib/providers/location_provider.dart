@@ -9,8 +9,7 @@ class LocationProvider {
   String apiUrl = 'https://api.yourdomain.com/v1';
 
   Future<List<Location>> fetchLocations() async {
-    CoreProvider apiProvider = CoreProvider();
-    final response = await apiProvider.fetchApi("users?delay=1");
+    final response = await CoreProvider().fetchApi("users?delay=1");
     return (json.decode(response.body)['data'] as List)
         .map((data) => Location.fromJson(data))
         .toList();

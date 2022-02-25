@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:giggle_app/screens/bar_screen.dart';
 import 'package:giggle_app/screens/home.dart';
+import 'package:giggle_app/screens/timer_ticker.dart';
 import 'package:giggle_app/widgets/bases/bottom_navigator.dart';
 import 'package:giggle_app/widgets/bases/main_top_bar.dart';
 
 void main() {
-  runApp(const MyApp());
+  () => runApp(
+        const MyApp(),
+      );
 }
 
 class MyApp extends StatefulWidget {
@@ -20,7 +23,7 @@ class _MyAppState extends State<MyApp> {
   static const _pages = <Widget>[
     Home(),
     BarScreen(),
-    BarScreen(),
+    TimerTicker(),
     BarScreen(),
   ];
 
@@ -38,13 +41,17 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: Scaffold(
-          appBar: const MainTopBar(),
-          body: Center(
-            child: _pages.elementAt(_selectedIndex),
-          ),
-          bottomNavigationBar:
-              BottomNavigator(onChangeScreen: (int c) => _onItemTapped(c), currentIndex: _selectedIndex,)),
+      home:
+//      Login()
+          Scaffold(
+              appBar: const MainTopBar(),
+              body: Center(
+                child: _pages.elementAt(_selectedIndex),
+              ),
+              bottomNavigationBar: BottomNavigator(
+                onChangeScreen: (int c) => _onItemTapped(c),
+                currentIndex: _selectedIndex,
+              )),
     );
   }
 }
